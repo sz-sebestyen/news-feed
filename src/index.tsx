@@ -7,9 +7,11 @@ import { Provider } from "react-redux";
 import * as serviceWorker from "./serviceWorker";
 import { fetchPosts } from "./features/posts/postsSlice";
 import { fetchUsers } from "./features/users/usersSlice";
+import { fetchComments } from "./features/comments/commentsSlice";
 
 store.dispatch(fetchPosts());
 store.dispatch(fetchUsers());
+store.dispatch(fetchComments());
 
 ReactDOM.render(
   <React.StrictMode>
