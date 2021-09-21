@@ -54,4 +54,6 @@ export const {
   selectIds: selectPostIds,
 } = postsAdapter.getSelectors<RootState>((state) => state.posts);
 
+export const selectPostsStatus = (state: RootState) => state.posts.status;
+
 export default postsSlice.reducer;
