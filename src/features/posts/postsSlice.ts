@@ -35,9 +35,9 @@ const postsSlice = createSlice({
   reducers: {},
   extraReducers(builder) {
     builder
-      .addCase(fetchPosts.fulfilled, (...args) => {
-        args[0].status = "success";
-        postsAdapter.setAll(...args);
+      .addCase(fetchPosts.fulfilled, (state, action) => {
+        state.status = "success";
+        postsAdapter.setAll(state, action);
       })
       .addCase(fetchPosts.pending, (state) => {
         state.status = "loading";
