@@ -1,13 +1,8 @@
 import React from "react";
-import { Posts } from "./components/Posts";
+import Router from "./pages/Router";
 
 function App() {
-  return (
-    <div>
-      <h1>News</h1>
-      <Posts />
-    </div>
-  );
+  return <Router />;
 }
 
 export default App;

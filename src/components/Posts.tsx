@@ -5,7 +5,7 @@ import { selectPostIds, selectPostsStatus } from "../features/posts/postsSlice";
 
 import Post from "./Post";
 
-export function Posts() {
+function Posts() {
   const postIds = useAppSelector(selectPostIds);
   const postsStatus = useAppSelector(selectPostsStatus);
 
@@ -17,3 +17,5 @@ export function Posts() {
     </div>
   );
 }
+
+export default Posts;
