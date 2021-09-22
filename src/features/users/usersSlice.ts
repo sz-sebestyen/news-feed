@@ -19,9 +19,8 @@ export const fetchUsersByIds = createAsyncThunk(
     const response = await fetch(
       `https://mindtech-feed-task.herokuapp.com/users?${query}`,
     );
-    const users = await response.json();
-    console.log(users);
-    return users;
+
+    return response.json();
   },
 );
 

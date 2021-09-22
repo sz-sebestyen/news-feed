@@ -10,8 +10,11 @@ import { fetchUsersByIds } from "./features/users/usersSlice";
 (async () => {
   const posts = await store.dispatch(fetchPosts()).unwrap();
 
-  const userIds = posts.map(({ userId }: { userId: number }) => userId);
-  store.dispatch(fetchUsersByIds(userIds));
+  const userIds: number[] = posts.map(
+    ({ userId }: { userId: number }) => userId,
+  );
+  const userIdsOnlyOnce = Array.from(new Set<number>(userIds).values());
+  store.dispatch(fetchUsersByIds(userIdsOnlyOnce));
 })();
 
 ReactDOM.render(
