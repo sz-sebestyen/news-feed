@@ -15,6 +15,16 @@ export const fetchComments = createAsyncThunk(
   },
 );
 
+export const fetchCommentsByPostId = createAsyncThunk(
+  "comments/fetchComments",
+  async (postId: number | string) => {
+    const response = await fetch(
+      `https://mindtech-feed-task.herokuapp.com/posts/${postId}/comments`,
+    );
+    return response.json();
+  },
+);
+
 type Comment = {
   postId: number;
   id: number;
@@ -29,7 +39,7 @@ const commentsAdapter = createEntityAdapter<Comment>({
 });
 
 type HasStatus = {
-  status: "idle" | "failed" | "success" | "loading";
+  status: "idle" | "failed" | "loading";
 };
 
 const AdditionalState: HasStatus = {
@@ -44,14 +54,14 @@ const commentsSlice = createSlice({
   reducers: {},
   extraReducers(builder) {
     builder
-      .addCase(fetchComments.fulfilled, (state, action) => {
-        state.status = "success";
-        commentsAdapter.setAll(state, action);
+      .addCase(fetchCommentsByPostId.fulfilled, (state, action) => {
+        state.status = "idle";
+        commentsAdapter.addMany(state, action);
       })
-      .addCase(fetchComments.pending, (state) => {
+      .addCase(fetchCommentsByPostId.pending, (state) => {
         state.status = "loading";
       })
-      .addCase(fetchComments.rejected, (state) => {
+      .addCase(fetchCommentsByPostId.rejected, (state) => {
         state.status = "failed";
       });
   },

@@ -2,7 +2,7 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import NotFound from "./NotFound";
 import Home from "./Home";
 import UserProfile from "./UserProfile";
-import Post from "./Post";
+import PostWithComments from "./PostWithComments";
 
 const Router = () => (
   <BrowserRouter>
@@ -12,7 +12,7 @@ const Router = () => (
       </Route>
 
       <Route exact path="/post/:postId">
-        <Post />
+        <PostWithComments />
       </Route>
 
       <Route exact path="/profile">

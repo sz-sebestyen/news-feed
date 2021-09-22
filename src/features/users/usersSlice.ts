@@ -61,7 +61,7 @@ const usersAdapter = createEntityAdapter<User>({
 });
 
 type HasStatus = {
-  status: "idle" | "failed" | "success" | "loading";
+  status: "idle" | "failed" | "loading";
 };
 
 const AdditionalState: HasStatus = {
@@ -77,8 +77,8 @@ const usersSlice = createSlice({
   extraReducers(builder) {
     builder
       .addCase(fetchUsersByIds.fulfilled, (state, action) => {
-        state.status = "success";
-        usersAdapter.setAll(state, action);
+        state.status = "idle";
+        usersAdapter.addMany(state, action);
       })
       .addCase(fetchUsersByIds.pending, (state) => {
         state.status = "loading";
