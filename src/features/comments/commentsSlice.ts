@@ -16,7 +16,7 @@ export const fetchComments = createAsyncThunk(
 );
 
 export const fetchCommentsByPostId = createAsyncThunk(
-  "comments/fetchComments",
+  "comments/fetchCommentsByPostId",
   async (postId: number | string) => {
     const response = await fetch(
       `https://mindtech-feed-task.herokuapp.com/posts/${postId}/comments`,
