@@ -9,13 +9,18 @@ function Post({ postId }: { postId: number | string }) {
   const post = usePost(postId);
   const history = useHistory();
 
-  const goToPostPage = () => history.push(`post/${postId}`);
+  const goToPostPage = () => history.push(`/post/${postId}`);
+  const goToUserPage = () => history.push(`/user/${post?.userId}`);
 
   return (
     <>
       {post && (
         <Card className="h-100">
-          <Card.Header>{post.user?.name}</Card.Header>
+          <Card.Header>
+            <span onClick={goToUserPage} role="button">
+              {post.user?.name}
+            </span>
+          </Card.Header>
           <Card.Body onClick={goToPostPage} role="button">
             <Card.Title>{post.title}</Card.Title>
             <Card.Text>{post.body}</Card.Text>

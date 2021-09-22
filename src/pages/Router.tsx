@@ -15,7 +15,7 @@ const Router = () => (
         <PostWithComments />
       </Route>
 
-      <Route exact path="/profile">
+      <Route exact path="/user/:userId">
         <UserProfile />
       </Route>
 
