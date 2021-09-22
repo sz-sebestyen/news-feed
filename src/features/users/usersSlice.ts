@@ -12,6 +12,19 @@ export const fetchUsers = createAsyncThunk("posts/fetchUsers", async () => {
   return response.json();
 });
 
+export const fetchUsersByIds = createAsyncThunk(
+  "posts/fetchUsersByIds",
+  async (userIds: number[]) => {
+    const query = userIds.map((userId) => `id=${userId}`).join("&");
+    const response = await fetch(
+      `https://mindtech-feed-task.herokuapp.com/users?${query}`,
+    );
+    const users = await response.json();
+    console.log(users);
+    return users;
+  },
+);
+
 type UserAddressGeo = {
   lat: string;
   lng: string;
@@ -63,14 +76,14 @@ const usersSlice = createSlice({
   reducers: {},
   extraReducers(builder) {
     builder
-      .addCase(fetchUsers.fulfilled, (state, action) => {
+      .addCase(fetchUsersByIds.fulfilled, (state, action) => {
         state.status = "success";
         usersAdapter.setAll(state, action);
       })
-      .addCase(fetchUsers.pending, (state) => {
+      .addCase(fetchUsersByIds.pending, (state) => {
         state.status = "loading";
       })
-      .addCase(fetchUsers.rejected, (state) => {
+      .addCase(fetchUsersByIds.rejected, (state) => {
         state.status = "failed";
       });
   },

@@ -6,12 +6,14 @@ import { store } from "./app/store";
 import { Provider } from "react-redux";
 import * as serviceWorker from "./serviceWorker";
 import { fetchPosts } from "./features/posts/postsSlice";
-import { fetchUsers } from "./features/users/usersSlice";
-import { fetchComments } from "./features/comments/commentsSlice";
+import { fetchUsersByIds } from "./features/users/usersSlice";
 
-store.dispatch(fetchPosts());
-store.dispatch(fetchUsers());
-store.dispatch(fetchComments());
+(async () => {
+  const posts = await store.dispatch(fetchPosts()).unwrap();
+
+  const userIds = posts.map(({ userId }: { userId: number }) => userId);
+  store.dispatch(fetchUsersByIds(userIds));
+})();
 
 ReactDOM.render(
   <React.StrictMode>
