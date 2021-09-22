@@ -2,6 +2,7 @@ import React from "react";
 import { useAppSelector } from "../app/hooks";
 import { selectPostById } from "../features/posts/postsSlice";
 import { selectUserById } from "../features/users/usersSlice";
+import Card from "react-bootstrap/Card";
 
 function Post({ postId }: { postId: number | string }) {
   const post = usePost(postId);
@@ -9,9 +10,13 @@ function Post({ postId }: { postId: number | string }) {
   return (
     <div>
       {post && (
-        <>
-          {post.user?.username}: {post?.title}
-        </>
+        <Card>
+          <Card.Header>{post.user?.name}</Card.Header>
+          <Card.Body>
+            <Card.Title>{post.title}</Card.Title>
+            <Card.Text>{post.body}</Card.Text>
+          </Card.Body>
+        </Card>
       )}
     </div>
   );
