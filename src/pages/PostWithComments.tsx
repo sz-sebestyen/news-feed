@@ -13,7 +13,9 @@ function PostWithComments() {
 
   return (
     <Container>
-      <Post postId={postId} />
+      <div className="my-5">
+        <Post postId={postId} />
+      </div>
       <Comments postId={postId} />
     </Container>
   );
