@@ -8,9 +8,9 @@ function Post({ postId }: { postId: number | string }) {
   const post = usePost(postId);
 
   return (
-    <div>
+    <>
       {post && (
-        <Card>
+        <Card className="h-100">
           <Card.Header>{post.user?.name}</Card.Header>
           <Card.Body>
             <Card.Title>{post.title}</Card.Title>
@@ -18,7 +18,7 @@ function Post({ postId }: { postId: number | string }) {
           </Card.Body>
         </Card>
       )}
-    </div>
+    </>
   );
 }
 
