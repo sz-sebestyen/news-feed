@@ -5,6 +5,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import InputGroup from "react-bootstrap/InputGroup";
 import Button from "react-bootstrap/Button";
+import { api } from "../app/api";
 
 function ProfileForm({
   user,
@@ -19,16 +20,13 @@ function ProfileForm({
   const saveProfile = async () => {
     if (!user) return;
 
-    const response = await fetch(
-      `https://mindtech-feed-task.herokuapp.com/users/${user.id}`,
-      {
-        method: "PATCH",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(user),
+    const response = await api(`/users/${user.id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
       },
-    );
+      body: JSON.stringify(user),
+    });
 
     if (response.status === 200) {
       setHasUpdated(true);

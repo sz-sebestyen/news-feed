@@ -4,13 +4,12 @@ import {
   createEntityAdapter,
 } from "@reduxjs/toolkit";
 import { RootState } from "../../app/store";
+import { api } from "../../app/api";
 
 export const fetchComments = createAsyncThunk(
   "comments/fetchComments",
   async () => {
-    const response = await fetch(
-      "https://mindtech-feed-task.herokuapp.com/comments",
-    );
+    const response = await api("/comments");
     return response.json();
   },
 );
@@ -18,9 +17,7 @@ export const fetchComments = createAsyncThunk(
 export const fetchCommentsByPostId = createAsyncThunk(
   "comments/fetchCommentsByPostId",
   async (postId: number | string) => {
-    const response = await fetch(
-      `https://mindtech-feed-task.herokuapp.com/posts/${postId}/comments`,
-    );
+    const response = await api(`/posts/${postId}/comments`);
     return response.json();
   },
 );

@@ -4,11 +4,10 @@ import {
   createEntityAdapter,
 } from "@reduxjs/toolkit";
 import { RootState } from "../../app/store";
+import { api } from "../../app/api";
 
 export const fetchPosts = createAsyncThunk("posts/fetchPosts", async () => {
-  const response = await fetch(
-    "https://mindtech-feed-task.herokuapp.com/posts",
-  );
+  const response = await api("/posts");
   return response.json();
 });
 

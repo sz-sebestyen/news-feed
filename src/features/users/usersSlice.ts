@@ -4,11 +4,10 @@ import {
   createEntityAdapter,
 } from "@reduxjs/toolkit";
 import { RootState } from "../../app/store";
+import { api } from "../../app/api";
 
 export const fetchUsers = createAsyncThunk("posts/fetchUsers", async () => {
-  const response = await fetch(
-    "https://mindtech-feed-task.herokuapp.com/users",
-  );
+  const response = await api("/users");
   return response.json();
 });
 
@@ -16,9 +15,7 @@ export const fetchUsersByIds = createAsyncThunk(
   "posts/fetchUsersByIds",
   async (userIds: number[]) => {
     const query = userIds.map((userId) => `id=${userId}`).join("&");
-    const response = await fetch(
-      `https://mindtech-feed-task.herokuapp.com/users?${query}`,
-    );
+    const response = await api(`/users?${query}`);
 
     return response.json();
   },
