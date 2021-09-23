@@ -97,7 +97,31 @@ function ProfileForm({
         </Form.Group>
       </Row>
       <Row className="mb-3 gy-3">
-        <Form.Group as={Col} md="3" controlId="city">
+        <Form.Group as={Col} md="6" controlId="phone">
+          <Form.Label>Phone</Form.Label>
+          <Form.Control
+            required
+            type="tel"
+            placeholder="Phone"
+            defaultValue={user.phone}
+            disabled
+          />
+          <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+        </Form.Group>
+        <Form.Group as={Col} md="6" controlId="website">
+          <Form.Label>Website</Form.Label>
+          <Form.Control
+            required
+            type="text"
+            placeholder="Website"
+            defaultValue={user.website}
+            disabled
+          />
+          <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+        </Form.Group>
+      </Row>
+      <Row className="mb-3 gy-3">
+        <Form.Group as={Col} md="4" controlId="city">
           <Form.Label>City</Form.Label>
           <Form.Control
             type="text"
@@ -110,7 +134,7 @@ function ProfileForm({
             Please provide a valid city.
           </Form.Control.Feedback>
         </Form.Group>
-        <Form.Group as={Col} md="3" controlId="street">
+        <Form.Group as={Col} md="4" controlId="street">
           <Form.Label>Street</Form.Label>
           <Form.Control
             type="text"
@@ -123,7 +147,7 @@ function ProfileForm({
             Please provide a valid street.
           </Form.Control.Feedback>
         </Form.Group>
-        <Form.Group as={Col} md="3" controlId="suite">
+        <Form.Group as={Col} md="4" controlId="suite">
           <Form.Label>Suite</Form.Label>
           <Form.Control
             type="text"
@@ -136,7 +160,9 @@ function ProfileForm({
             Please provide a valid suite.
           </Form.Control.Feedback>
         </Form.Group>
-        <Form.Group as={Col} md="3" controlId="zip">
+      </Row>
+      <Row className="mb-3 gy-3">
+        <Form.Group as={Col} md="4" controlId="zip">
           <Form.Label>Zip</Form.Label>
           <Form.Control
             type="text"
@@ -149,31 +175,8 @@ function ProfileForm({
             Please provide a valid zip.
           </Form.Control.Feedback>
         </Form.Group>
-      </Row>
-      <Row className="mb-3 gy-3">
-        <Form.Group as={Col} md="3" controlId="phone">
-          <Form.Label>Phone</Form.Label>
-          <Form.Control
-            required
-            type="tel"
-            placeholder="Phone"
-            defaultValue={user.phone}
-            disabled
-          />
-          <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-        </Form.Group>
-        <Form.Group as={Col} md="3" controlId="website">
-          <Form.Label>Website</Form.Label>
-          <Form.Control
-            required
-            type="text"
-            placeholder="Website"
-            defaultValue={user.website}
-            disabled
-          />
-          <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-        </Form.Group>
-        <Form.Group as={Col} md="3" controlId="lat">
+
+        <Form.Group as={Col} md="4" controlId="lat">
           <Form.Label>Lat</Form.Label>
           <Form.Control
             required
@@ -184,7 +187,8 @@ function ProfileForm({
           />
           <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
         </Form.Group>
-        <Form.Group as={Col} md="3" controlId="Lng">
+
+        <Form.Group as={Col} md="4" controlId="Lng">
           <Form.Label>Lng</Form.Label>
           <Form.Control
             required
@@ -220,11 +224,11 @@ function ProfileForm({
           <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
         </Form.Group>
         <Form.Group as={Col} md="4" controlId="companyBs">
-          <Form.Label>Bs</Form.Label>
+          <Form.Label>Company Bs</Form.Label>
           <Form.Control
             required
             type="text"
-            placeholder="Bs"
+            placeholder="Company Bs"
             defaultValue={user.company.bs}
             disabled
           />
