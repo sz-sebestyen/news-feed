@@ -12,7 +12,7 @@ function PostWithComments() {
   const { postId } = useParams<PostParams>();
 
   return (
-    <Container className="my-5">
+    <Container className="my-3">
       <Post postId={postId} />
       <Comments postId={postId} />
     </Container>

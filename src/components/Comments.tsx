@@ -18,7 +18,7 @@ function Comments({ postId }: { postId: number | string }) {
 
   return (
     <div>
-      <h4 className="mb-3 mt-5">Comments:</h4>
+      <h4 className="my-3">Comments:</h4>
       {commentIds.map((commentId) => (
         <Comment commentId={commentId} key={commentId} />
       ))}
