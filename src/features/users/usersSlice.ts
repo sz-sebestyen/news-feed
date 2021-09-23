@@ -69,7 +69,9 @@ const initialState = usersAdapter.getInitialState(AdditionalState);
 const usersSlice = createSlice({
   name: "users",
   initialState: initialState,
-  reducers: {},
+  reducers: {
+    userUpdated: usersAdapter.setOne,
+  },
   extraReducers(builder) {
     builder
       .addCase(fetchUsersByIds.fulfilled, (state, action) => {
@@ -92,5 +94,7 @@ export const {
 } = usersAdapter.getSelectors<RootState>((state) => state.users);
 
 export const selectUsersStatus = (state: RootState) => state.users.status;
+
+export const { userUpdated } = usersSlice.actions;
 
 export default usersSlice.reducer;

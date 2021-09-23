@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import type { User } from "../features/users/usersSlice";
+import { useDispatch } from "react-redux";
+import { User, userUpdated } from "../features/users/usersSlice";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -14,6 +15,7 @@ function ProfileForm({
   user: User;
   setUser: React.Dispatch<React.SetStateAction<User | undefined>>;
 }) {
+  const dispatch = useDispatch();
   const [isValidated, setIsValidated] = useState(false);
   const [hasUpdated, setHasUpdated] = useState(false);
 
@@ -29,6 +31,7 @@ function ProfileForm({
     });
 
     if (response.status === 200) {
+      dispatch(userUpdated(user));
       setHasUpdated(true);
       setTimeout(() => setHasUpdated(false), 3000);
     }
