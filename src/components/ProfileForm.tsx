@@ -186,12 +186,12 @@ function ProfileForm({
           />
           <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
         </Form.Group>
-        <Form.Group as={Col} md="3" controlId="lgn">
-          <Form.Label>Lgn</Form.Label>
+        <Form.Group as={Col} md="3" controlId="Lng">
+          <Form.Label>Lng</Form.Label>
           <Form.Control
             required
             type="text"
-            placeholder="Lgn"
+            placeholder="Lng"
             defaultValue={user.address.geo.lng}
             disabled
           />
